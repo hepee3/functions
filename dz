@@ -1,0 +1,197 @@
+void allocate_memory(int*& arr, int sz)
+{
+    setlocale(0, "RUS");
+    if (sz <= 0 || sz > 10000)
+    {
+        cout << "Ошибка sz!\n";
+        return;
+
+         throw "Ошибка sz!\n"; 
+    
+         sz = 10;
+    }
+    arr = new int[sz];
+}
+
+
+void check_sz(int& sz)
+{
+    setlocale(0, "RUS");
+    if (sz <= 0 || sz > 10000)
+    {
+        cout << "Ошибка sz!\n";
+        return;
+
+        throw "Ошибка sz!\n"; 
+
+        sz = 10;
+    }
+}
+
+
+void random_fill_arrray(int* arr, const unsigned int sz, const int min, const int max)
+{
+    setlocale(0, "RUS");
+    if (sz <= 0 || sz > 10000)
+    {
+        cout << "Ошибка sz!\n";
+        return;
+
+        throw "Ошибка sz!\n"; 
+        sz = 10;
+    }
+
+    int k = max - min + 1;
+    for (int i = 0; i < sz; i++)
+    {
+        arr[i] = rand() % k + min;
+    }
+}
+
+
+void print_arrray(int* arr, int sz)
+{
+    setlocale(0, "RUS");
+
+    check_sz(sz);
+    for (int i = 0; i < sz; i++)
+    {
+        cout << arr[i] << ", ";
+    }
+    cout << "\n\n";
+}
+
+
+void cin_fill_arrray(int* arr, const unsigned int sz)
+{
+    setlocale(0, "RUS");
+
+    if (sz <= 0 || sz > 10000)
+    {
+        cout << "Ошибка sz!\n";
+        return;
+
+        throw "Ошибка sz!\n";
+        sz = 10;
+    }
+    cout << " Enter members of massive:" << "\n";
+    for (int i = 0; i < sz; i++)
+    {
+        cin >> arr[i];
+    }
+}
+
+
+void fill_arrray_onenum(int* arr, const unsigned int sz, int num = 0)
+{
+    setlocale(0, "RUS");
+    if (sz <= 0 || sz > 10000)
+    {
+        cout << "Ошибка sz!\n";
+        return;
+
+        throw "Ошибка sz!\n"; 
+        sz = 10;
+    }
+
+    for (int i = 0; i < sz; i++)
+    {
+        arr[i] = num;
+    }
+}
+
+
+void free_memory(int* arr)
+{
+    setlocale(0, "RUS");
+    delete[] arr;
+}
+
+void add_element_to_end(int*& arr, int& sz, int num)
+{
+    setlocale(0, "RUS");
+    int* temp = new int[sz + 1];
+    for (int i = 0; i < sz; i++)
+    {
+        temp[i] = arr[i];
+    }
+    temp[sz] = num;
+    delete[] arr;
+    arr = temp;
+    sz++;
+}
+
+
+void add_element_to_starrt(int*& arr, int& sz, int num)
+{
+    setlocale(0, "RUS");
+    int* temp = new int[sz + 1];
+    for (int i = 0; i < sz; i++)
+    {
+        temp[i + 1] = arr[i];
+    }
+    temp[0] = num;
+    delete[] arr;
+    arr = temp;
+    sz++;
+}
+
+void add_element_by_index(int*& arr, int& sz, int index, int num)
+{
+    setlocale(0, "RUS");
+    int* temp = new int[sz + 1];
+    for (int i = 0; i < index; i++)
+    {
+        temp[i] = arr[i];
+    }
+    for (int i = index; i < sz + 1; i++)
+    {
+        temp[i + 1] = arr[i];
+    }
+    temp[index] = num;
+    delete[] arr;
+    arr = temp;
+    sz++;
+}
+
+void delete_element_by_index(int*& arr, int& sz, int index)
+{
+    setlocale(0, "RUS");
+    int* temp = new int[sz - 1];
+    for (int i = 0; i < index; i++)
+    {
+        temp[i] = arr[i];
+    }
+    for (int i = index; i < sz - 1; i++)
+    {
+        temp[i] = arr[i + 1];
+    }
+    delete[] arr;
+    arr = temp;
+    sz--;
+}
+void delete_element_by_starrt(int*& arr, int& sz)
+{
+    setlocale(0, "RUS");
+    int* temp = new int[sz - 1];
+    for (int i = 1; i < sz; i++)
+    {
+        temp[i - 1] = arr[i];
+    }
+    delete[] arr;
+    arr = temp;
+    sz--;
+}
+
+void delete_element_by_end(int*& arr, int& sz)
+{
+    setlocale(0, "RUS");
+    int* temp = new int[sz - 1];
+    for (int i = 0; i < sz - 1; i++)
+    {
+        temp[i] = arr[i];
+    }
+    delete[] arr;
+    arr = temp;
+    sz--;
+}
